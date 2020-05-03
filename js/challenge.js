@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function(){
     const likeList = document.querySelector("ul.likes");
     const heartBtn = document.getElementById("heart");
     const commentBtn = document.getElementById("submit");
+
+    const newCommentForm = document.getElementById("comment-form");
+    newCommentForm.addEventListener("submit", createNewComment);
     
 
     // function that actually increments the counter
@@ -67,7 +70,17 @@ document.addEventListener("DOMContentLoaded", function(){
         console.log(event);
     });
 
-    
+    //adding comments
+    function createNewComment(e){
+        e.preventDefault();
+        let newComment = document.createElement("p");
+        newComment.innerText = document.getElementById("comment-input").value;
+        
+        const appendNewComment = document.getElementById("list")
+        appendNewComment.appendChild(newComment);
+        e.target.reset();
+
+    };
 
 });
 
