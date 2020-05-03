@@ -1,15 +1,47 @@
 document.addEventListener("DOMContentLoaded", function(){
-    // As a user, I should see the timer increment every second once the page has loaded.
+    // accessing the counter element
     const myTimer = document.getElementById('counter');
+    // setting timer value
     let timerValue = 0;
-    let counterTime = window.setInterval(incrementNumber, 500);
-    
+    // setting counter functions/ ability to increment:
+    // "As a user, I should see the timer increment every second once the page has loaded."
+    let timeCounter = window.setInterval(incrementNumber, 500);
+    const minusBtn = document.getElementById("minus");
+    const pauseBtn = document.getElementById("pause");
+    const plusBtn = document.getElementById("plus");
+    const likeList = document.querySelector("ul.likes");
+    const heartBtn = document.getElementById("heart");
+    const commentBtn = document.getElementById("submit");
+
+    // function that actually increments the counter
     function incrementNumber(){
         myTimer.innerText = timerValue;
         timerValue++;
     }
-    
-    
+
+    // function that pauses the counterTime
+    pauseBtn.addEventListener("click", () => {
+        if ( pauseBtn.innerText === "pause"){
+            window.clearInterval(timeCounter);
+            pauseBtn.className = 'paused';
+            pauseBtn.innerText = 'resume';
+            minusBtn.disabled = true;
+            plusBtn.disabled = true;
+            heartBtn.disabled= true;
+            commentBtn.disabled= true;
+        }
+        else {
+            timeCounter = window.setInterval(incrementNumber, 500);
+            pauseBtn.className = 'running';
+            pauseBtn.innerText = 'pause';
+            minusBtn.disabled = false;
+            plusBtn.disabled = false;
+            heartBtn.disabled= false;
+            commentBtn.disabled= false;
+        }
+
+    });
+
 
 });
 
