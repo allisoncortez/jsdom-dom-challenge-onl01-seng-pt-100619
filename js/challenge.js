@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", function(){
             pauseBtn.innerText = 'resume';
             minusBtn.disabled = true;
             plusBtn.disabled = true;
-            heartBtn.disabled= true;
-            commentBtn.disabled= true;
+            heartBtn.disabled = true;
+            commentBtn.disabled = true;
         }
         else {
             timeCounter = window.setInterval(incrementNumber, 500);
@@ -61,13 +61,15 @@ document.addEventListener("DOMContentLoaded", function(){
     // TODO: I should see count of the number of 'likes' associated with that number.
     heartBtn.addEventListener("click", function(event){
         // create li to add the "this has been liked" feature
+        let count = 1;
         let likeListItem = document.createElement("li");
-        let heartNum = myTimer.innerText + " has been liked 1 time";
+        let heartNum = myTimer.innerText + ` has been liked ${count} time`;
         likeListItem.innerText = heartNum;
         // add this inner text into the ul.likes section, right about comments
         likeList.appendChild(likeListItem);
         //print
         console.log(event);
+        count = count++;
     });
 
     //adding comments
